@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Collatz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Type a number</h1>
+<form action="/collatzsequence">
+    <label for="value">Number:</label><br>
+    <input type="text" id="value" name="value" value="13"><br><br>
+    <input type="button" value="Submit" onclick="loadGetMsg()">
+</form>
+<div id="getrespmsg"></div>
+
+<script>
+            function loadGetMsg() {
+                let nameVar = document.getElementById("value").value;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function() {
+                    document.getElementById("getrespmsg").innerHTML =
+                    this.responseText;
+                }
+                xhttp.open("GET", "/collatzsequence?value="+nameVar);
+                xhttp.send();
+            }
+        </script>
+
+</body>
+</html>
